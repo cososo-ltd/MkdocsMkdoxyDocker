@@ -4,9 +4,9 @@
 #
 # Published as ghcr.io/cososo-ltd/mkdocs-mkdoxy — see docs/containers.md in the
 # consuming repo for how it is pinned by sha-<short>.
-FROM python:3.12-slim-bookworm
+FROM python:3.12-slim-trixie@sha256:5e2bdb1b0d542d5039cffb8181c65930093949194a65c365dfb1b0fe13a4fa5b
 
-# doxygen: the API extractor (Debian bookworm ships 1.9.4). graphviz: dot graphs.
+# doxygen: the API extractor (Debian trixie ships 1.9.8). graphviz: dot graphs.
 RUN apt-get update \
  && apt-get install -y --no-install-recommends doxygen graphviz \
  && rm -rf /var/lib/apt/lists/*
