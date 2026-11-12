@@ -1,0 +1,41 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "description": "Bumps the digest of the Python base in Dockerfile and the SHA-pinned actions in the build workflow. Nothing merges itself; see README.md.",
+  "enabledManagers": [
+    "dockerfile",
+    "github-actions"
+  ],
+  "dependencyDashboard": true,
+  "assignees": [
+    "DavidCozens"
+  ],
+  "semanticCommits": "enabled",
+  "semanticCommitType": "chore",
+  "semanticCommitScope": null,
+  "packageRules": [
+    {
+      "description": "The Python base is named by its tag and pinned by digest, so a refreshed 3.12-slim-trixie is a digest update. A new Python minor or major in the tag is a toolchain move and waits on the Dependency Dashboard.",
+      "matchDatasources": [
+        "docker"
+      ],
+      "matchDepNames": [
+        "python"
+      ],
+      "pinDigests": true,
+      "commitMessageTopic": "the Python base"
+    },
+    {
+      "matchDatasources": [
+        "docker"
+      ],
+      "matchDepNames": [
+        "python"
+      ],
+      "matchUpdateTypes": [
+        "minor",
+        "major"
+      ],
+      "dependencyDashboardApproval": true
+    }
+  ]
+}
